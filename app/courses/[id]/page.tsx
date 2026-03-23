@@ -2,11 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import BookNowButton from "./BookNowButton";
-import { getCourseById } from "../../data/courseService";
+import { getCourseById, getCoursesData } from "../../data/courseService";
 
 type CourseDetailsPageProps = {
   params: Promise<{ id: string }>;
 };
+
+export async function generateStaticParams() {
+  const courses = await getCoursesData();
+  return courses.map((course) => ({ id: course.id }));
+}
 
 export default async function CourseDetailsPage({
   params,
