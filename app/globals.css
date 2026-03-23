@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --sport-bg-deep: #0f2742;
+  --sport-bg-mid: #15466e;
+  --sport-bg-soft: #1e6a5a;
+  --sport-surface: rgba(255, 255, 255, 0.09);
+  --sport-surface-strong: rgba(255, 255, 255, 0.14);
+  --sport-border: rgba(255, 255, 255, 0.2);
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: #ffffff;
+  line-height: 1.65;
+  background:
+    radial-gradient(
+      circle at 12% 16%,
+      rgba(45, 212, 191, 0.14),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 82% 12%,
+      rgba(56, 189, 248, 0.12),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      var(--sport-bg-deep),
+      var(--sport-bg-mid) 55%,
+      var(--sport-bg-soft)
+    );
+  background-size:
+    120% 120%,
+    120% 120%,
+    120% 120%;
+  animation: stadiumPan 28s ease-in-out infinite alternate;
+}
+
+@keyframes stadiumPan {
+  0% {
+    background-position:
+      0% 0%,
+      100% 0%,
+      0% 100%;
+  }
+  100% {
+    background-position:
+      14% 10%,
+      86% 6%,
+      18% 84%;
+  }
+}
+
+:where(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  li,
+  label,
+  span
+) {
+  font-weight: 600 !important;
+}
+
+:where(main) :where(p, li) {
+  line-height: 1.75;
+}
+
+:where(main) > :where(section, div) + :where(section, div) {
+  margin-top: clamp(1rem, 1.8vw, 1.8rem);
+}
+
+::selection {
+  background: rgba(16, 185, 129, 0.35);
+}
+
+.sport-surface {
+  background: var(--sport-surface);
+  border-color: var(--sport-border);
+}
+
+/* Harmonize common utility colors used across pages */
+[class*="bg-neutral-950"] {
+  background-color: rgba(12, 52, 83, 0.48) !important;
+}
+
+[class*="bg-black"] {
+  background-color: rgba(11, 45, 74, 0.42) !important;
+}
+
+[class*="from-black"],
+[class*="from-slate-900"],
+[class*="from-neutral-950"] {
+  --tw-gradient-from: rgba(12, 59, 90, 0.8) var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgb(12 59 90 / 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops:
+    var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+[class*="via-neutral-950"] {
+  --tw-gradient-via: rgba(19, 79, 109, 0.52) var(--tw-gradient-via-position) !important;
+  --tw-gradient-to: rgb(19 79 109 / 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops:
+    var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to) !important;
+}
+
+[class*="text-neutral-950"] {
+  color: #0a3f59 !important;
+}
+
+[class*="bg-white/10"] {
+  background-color: var(--sport-surface-strong) !important;
+}
